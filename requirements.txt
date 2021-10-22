@@ -10,4 +10,11 @@ Step 2. Setup virtual enviroment.
 
 	2) Activate virtual enviroment with the following command. source venv/bin/activate.
 
-Step 3. 
+Step 3. pip installs needed:
+		click==8.0.3
+		Flask==2.0.2
+		itsdangerous==2.0.1
+		Jinja2==3.0.2
+		MarkupSafe==2.0.1
+		python-dotenv==0.19.1
+		Werkzeug==2.0.2
