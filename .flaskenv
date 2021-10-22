@@ -1,0 +1,2 @@
+FLASK_APP=vehicle_register
+FLASK_ENV=development
