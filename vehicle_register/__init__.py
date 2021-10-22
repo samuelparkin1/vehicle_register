@@ -26,11 +26,11 @@ def get_vehicles():
 def post_new_vehicles():
     return "Make a profile for a new vehicle"
 
-@app.route('/vehicle/<int:id>/')
+@app.route('/vehicles/<int:id>/')
 def get_vehicle_information(id):
     return f" vehicle information for {id}\n""list of vehicle information"
 
-@app.route('/vehicle/<int:id>/photo')
+@app.route('/vehicles/<int:id>/photo')
 def post_vehicle_photos(id):
     return f" photos of {id}"
 
