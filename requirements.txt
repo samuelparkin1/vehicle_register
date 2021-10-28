@@ -11,6 +11,10 @@ Step 2. Setup virtual enviroment.
 	2) Activate virtual enviroment with the following command. source venv/bin/activate.
 
 Step 3. pip installs needed:
+		run the follow command in terminal window
+			pip install -r requirements.txt
+		The following should be installed.
+		 	
 		click==8.0.3
 		Flask==2.0.2
 		itsdangerous==2.0.1
