@@ -1,2 +1,2 @@
-FLASK_APP=vehicle_register
+FLASK_APP=vehicle_register/main.py:create_app
 FLASK_ENV=development
