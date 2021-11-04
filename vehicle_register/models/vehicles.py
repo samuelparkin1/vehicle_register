@@ -1,4 +1,3 @@
-
 from main import db
 
 class Vehicle(db.Model):

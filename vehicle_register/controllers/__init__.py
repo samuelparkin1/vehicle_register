@@ -1,3 +1,3 @@
 from controllers.vehicle_controller import vehicles
-
-registerable_controllers = [vehicles]
+from controllers.staff_controller import staff
+registerable_controllers = [vehicles, staff]
