@@ -12,10 +12,4 @@ class Vehicle(db.Model):
     def __init__(self, vehicle_rego):
         self.vehicle_rego = vehicle_rego
 
-    @property
-    def serialize(self):
-        return {
-            "vehicle_id": self.vehicle_id,
-            "vehicle_rego": self.vehicle_rego
-            }
     

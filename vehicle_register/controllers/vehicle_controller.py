@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from main import db
 from models.vehicles import Vehicle
 from models.staff import Staff
+from schemas.vehicle_schema import vehicle_schema, vehicles_schema
 
 vehicles =Blueprint('vehicles', __name__)
 staff =Blueprint('staff', __name__)
@@ -23,33 +24,37 @@ def homepage():
 @vehicles.route("/vehicles/", methods=["GET"])
 def get_vehicles():
     vehicles = Vehicle.query.all()
-    return jsonify([vehicle.serialize for vehicle in vehicles])
+    return jsonify(vehicles_schema.dump(vehicles))
 
 @vehicles.route("/vehicles/", methods=["POST"])
 def create_vehicle():
-    new_vehicle = Vehicle(request.json['vehicle_rego'])
+    new_vehicle = vehicle_schema.load (request.json)
     db.session.add(new_vehicle)
     db.session.commit()
-    return jsonify(new_vehicle.serialize)
+    return jsonify(vehicle_schema.dump(new_vehicle))
 
 @vehicles.route("/vehicles/<int:id>/", methods = ["GET"])
 def get_vehicle(id):
     vehicle = Vehicle.query.get_or_404(id)
-    return jsonify(vehicle.serialize)
+    return jsonify (vehicle_schema.dump(vehicle))
 
 @vehicles.route("/vehicles/<int:id>/", methods=["PUT", "PATCH"])
 def update_vehicle(id):
     vehicle = Vehicle.query.filter_by(vehicle_id=id)
-    vehicle.update(dict(vehicle_rego = request.json["vehicle_rego"]))
+    updated_fields = vehicle_schema.dump(request.json)
+    if updated_fields:
+        vehicle.update(updated_fields)
+        db.sessions.commit()
+    vehicle.update()
     db.session.commit()
-    return jsonify(vehicle.first().serialize)
+    return jsonify(vehicle_schema.dump(Vehicle.first()))
 
 @vehicles.route("/vehicles/<int:id>/", methods = ["DELETE"])
 def delete_vehicle(id):
     vehicle = Vehicle.query.get_or_404(id)
     db.session.delete(vehicle)
     db.session.commit()
-    return jsonify(vehicle.serialize)
+    return jsonify(vehicle_schema.dump(vehicle))
 
 # Staff CRUD
 
