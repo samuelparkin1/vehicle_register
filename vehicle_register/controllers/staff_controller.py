@@ -38,4 +38,4 @@ def delete_staff(id):
     staff = Staff.query.get_or_404(id)
     db.session.delete(staff)
     db.session.commit()
-    return jsonify(staff.serialize)
+    return jsonify(staff_member_schema.dump(staff))

@@ -8,9 +8,3 @@ class Staff(db.Model):
         def __init__(self, staff_member_name):
             self.staff_member_name = staff_member_name
 
-        @property
-        def serialize(self):
-            return {
-                "staff_id": self.staff_id,
-                "staff_name": self.staff_name
-            }
