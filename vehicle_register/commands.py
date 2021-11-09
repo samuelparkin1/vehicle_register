@@ -36,12 +36,18 @@ def reset_db():
     print("Tables created!")
 
     from models.vehicles import Vehicle
+    from models.staff import Staff
     from faker import Faker
-    faker = Faker()
+    faker = Faker(['en_AU'])
 
     for i in range(20):
-        vehicle = Vehicle (faker.catch_phrase())
+        vehicle = Vehicle (faker.license_plate())
         db.session.add(vehicle)
+        
+    for i in range(20):
+        staff = Staff (faker.name())
+        db.session.add (staff)
+    
     
     db.session.commit()
     print("Tables seeded")
