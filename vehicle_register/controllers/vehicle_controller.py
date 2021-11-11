@@ -61,7 +61,7 @@ def update_vehicle(id):
     return render_template("vehicle_detail.html", page_data=data)
 
 
-@vehicles.route("/vehicles/<int:id>/", methods = ["DELETE"])
+@vehicles.route("/vehicles/<int:id>/delete/", methods = ["POST"])
 def delete_vehicle(id):
     # Can't delete a course that doesn't exist, so get_or_404 here is correct
     vehicle = Vehicle.query.get_or_404(id)
