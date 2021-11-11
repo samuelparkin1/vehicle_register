@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+    <hr>
+    <div>
+        <h2>New Vehicle</h2>
+        <div>
+            <form action="/vehicles/" method="POST">
+                <input type="text" name="vehicle_rego" placeholder="Vehicle rego...">
+                <button>Create</button>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <h2>Course List</h2>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>    
+                <th>Vehicle rego</th>
+            </tr>
+        </thead>
+        {% for vehicle in page_data.vehicles %}
+        <tbody>
+            <tr>
+                <td>
+                    <a href="/vehicles/{{ vehicle.vehicle_id }}/">{{ vehicle.vehicle_rego }}</a><br/>
+                </td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+{% endblock %}
