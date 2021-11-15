@@ -3,6 +3,8 @@ from main import db
 from models.vehicles import Vehicle
 from schemas.vehicle_schema import vehicle_schema, vehicles_schema
 
+
+# Creates a Blueprint instance which allows the complete web site to be made up different sections. 
 vehicles =Blueprint('vehicles', __name__)
 
 

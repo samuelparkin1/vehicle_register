@@ -3,6 +3,7 @@ from main import db
 from models.staff import Staff
 from schemas.staff_schema import staff_member_schema, staff_members_schema
 
+
 staff = Blueprint('staff', __name__)
 
 # Staff CRUD
