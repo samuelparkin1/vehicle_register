@@ -1,10 +1,9 @@
 from main import db
 
 class Vehicle(db.Model):
-    # Does this create the table 'vehicle' if it does't exist????
+    
     __tablename__ = "vehicles"
 
-    #
     vehicle_id = db.Column(
         db.Integer, 
         primary_key=True)
@@ -14,7 +13,21 @@ class Vehicle(db.Model):
         unique=True, 
         nullable=False)
     
-    def __init__(self, vehicle_rego):
-        self.vehicle_rego = vehicle_rego
+    vehicle_make = db.Column(
+        db.String(80), 
+        unique=False, 
+        nullable=True,
+        default = "Speedracer")
+
+    vehicle_checked_out = db.Column(
+        db.Boolean(),
+        nullable=True,
+        default= False)
+    
+
+    # def __init__(self, vehicle_rego, vehicle_make, vehicle_checked_out):
+    #     self.vehicle_rego = vehicle_rego
+    #     self.vehicle_make = vehicle_make
+    #     self.vehicle_checked_out = vehicle_checked_out
 
     

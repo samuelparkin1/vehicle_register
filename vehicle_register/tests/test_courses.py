@@ -20,7 +20,7 @@ class TestCourses(unittest.TestCase):
         # this generates an imaginary browser that can make requests
         self.client = self.app.test_client()
     
-    def test_course_index(self):
+    def test_vehicle_index(self):
         # we use the client to make a request
         response = self.client.get("/vehicles/")
         data = response.get_json()
@@ -29,6 +29,6 @@ class TestCourses(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIsInstance(data, list)
 
-    def test_create_bad_course(self):
+    def test_create_bad_vehicle(self):
         response = self.client.post("/vehicles/", json={"vehicle_rego": ""})
         self.assertEqual(response.status_code, 400)
