@@ -23,6 +23,10 @@ class Vehicle(db.Model):
         db.Boolean(),
         nullable=True,
         default= False)
+
+    @property
+    def image_filename(self):
+        return f"vehicle_images/{self.vehicle_id}.png"
     
 
     # def __init__(self, vehicle_rego, vehicle_make, vehicle_checked_out):
